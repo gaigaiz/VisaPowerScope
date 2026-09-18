@@ -68,7 +68,7 @@ oscill --simulate identify
 oscill --simulate --model tektronix-mso4034 measure --parameter VPP --source CH1
 ```
 
-详细环境配置与操作说明见 [环境配置与使用说明.md](环境配置与使用说明.md)，快速上手指南见 [快速使用步骤.md](快速使用步骤.md)。
+详细环境配置与操作说明见 [环境配置与使用说明.md](Environment%20configuration%20and%20usage%20instructions/环境配置与使用说明.md)，快速上手指南见 [快速使用步骤.md](Environment%20configuration%20and%20usage%20instructions/快速使用步骤.md)，NI-VISA 运行时安装见 [NI-VISA安装与使用说明.md](Environment%20configuration%20and%20usage%20instructions/NI-VISA安装与使用说明.md)。
 
 ## 输入输出示例
 
@@ -101,20 +101,36 @@ CH1 VPP: 1.234
 ## 项目结构
 
 ```
-oscill/
-├── __init__.py
-├── controller.py    # 仪器控制层（Oscilloscope / TektronixMSO4034 / Waveform）
-├── services.py      # 采集、测量、功耗统计服务
-├── transport.py     # VISA 传输层与模拟传输
-├── worker.py        # 后台串行执行器
-├── i18n.py          # 轻量国际化（中英文字典 + 运行时切换）
-├── gui.py           # PyQt5 + PyQtGraph 图形界面
-└── cli.py           # 命令行入口
+oscill-0.1.0-linux/
+├── oscill/                          # Python 包
+│   ├── __init__.py
+│   ├── controller.py                # 仪器控制层（Oscilloscope / TektronixMSO4034 / Waveform）
+│   ├── services.py                  # 采集、测量、功耗统计服务
+│   ├── transport.py                 # VISA 传输层与模拟传输
+│   ├── worker.py                    # 后台串行执行器
+│   ├── i18n.py                     # 轻量国际化（中英文字典 + 运行时切换）
+│   ├── gui.py                      # PyQt5 + PyQtGraph 图形界面
+│   ├── cli.py                      # 命令行入口
+│   └── py.typed                    # PEP 561 类型标记
+├── Environment configuration and usage instructions/
+│   ├── NI-VISA安装与使用说明.md      # NI-VISA 运行时安装与配置
+│   ├── 环境配置与使用说明.md          # Ubuntu 22.04 完整环境配置与 GUI/CLI 使用指南
+│   ├── 快速使用步骤.md               # 快速上手指南
+│   └── 项目执行计划.md               # 改造执行计划 v1.2
+├── NI_VISA_deb/
+│   └── ni-ubuntu2204-drivers-2026Q3.deb   # NI-VISA Ubuntu 22.04 驱动包
+├── _static_check.py                # i18n 键完整性与属性自检（零依赖）
+├── _format_check.py                # 格式化占位符一致性自检（零依赖）
+├── pyproject.toml                  # 包配置与依赖声明
+├── LICENSE                         # MIT
+└── README.md
 ```
+
+> `oscill-0.1.0.dist-info/`、`.venv/`、`__pycache__/` 等构建与环境产物已在 `.gitignore` 中排除。
 
 ## 项目管理
 
-本项目的开发执行计划（[项目执行计划.md](项目执行计划.md)）使用 [project-execution-planner](https://github.com/gaigaiz/The-production-and-sharing-of-SKILL) Skill 制作，该 Skill 来自 [The-production-and-sharing-of-SKILL](https://github.com/gaigaiz/The-production-and-sharing-of-SKILL) 项目，可将口语化项目需求转化为结构完整、可执行的项目执行计划文档。
+本项目的开发执行计划（[项目执行计划.md](Environment%20configuration%20and%20usage%20instructions/项目执行计划.md)）使用 [project-execution-planner](https://github.com/gaigaiz/The-production-and-sharing-of-SKILL) Skill 制作，该 Skill 来自 [The-production-and-sharing-of-SKILL](https://github.com/gaigaiz/The-production-and-sharing-of-SKILL) 项目，可将口语化项目需求转化为结构完整、可执行的项目执行计划文档。
 
 ## 许可证
 
